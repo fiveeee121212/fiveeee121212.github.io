@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multicharacter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="hidden">
+    <section class="panel header">
+      <div>
+        <h1>Multicharacter</h1>
+        <p>Sélectionne, crée ou supprime un personnage.</p>
+      </div>
+      <div class="badge" id="slotBadge">0 / 0 slots utilisés</div>
+    </section>
+
+    <section class="layout">
+      <aside class="panel cards" id="charactersList"></aside>
+
+      <section class="panel form">
+        <h2>Créer un personnage</h2>
+        <form id="createForm">
+          <label>Prénom
+            <input name="firstName" maxlength="18" required />
+          </label>
+          <label>Nom
+            <input name="lastName" maxlength="18" required />
+          </label>
+          <div class="row">
+            <label>Sexe
+              <select name="sex" required>
+                <option value="m">Homme</option>
+                <option value="f">Femme</option>
+                <option value="x">Autre</option>
+              </select>
+            </label>
+            <label>Date de naissance
+              <input name="birthDate" type="date" required />
+            </label>
+          </div>
+          <label>Nationalité
+            <input name="nationality" maxlength="32" required />
+          </label>
+          <button type="submit" class="primary">Créer le personnage</button>
+        </form>
+      </section>
+    </section>
+
+    <section class="panel footer">
+      <button id="refreshBtn">Actualiser</button>
+      <button id="closeBtn" class="ghost">Fermer</button>
+      <p id="feedback"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
