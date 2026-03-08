@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multicharacter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="hidden">
+    <section class="shell">
+      <header class="topbar panel">
+        <div>
+          <h1>Character Selection</h1>
+          <p>Sélectionne un slot pour jouer ou créer un nouveau personnage.</p>
+        </div>
+        <div class="badge" id="slotBadge">0 / 0 slots</div>
+      </header>
+
+      <section class="content">
+        <aside class="panel slots-panel">
+          <div class="panel-title">
+            <h2>Slots</h2>
+            <button id="newCharacterBtn" class="btn-primary">Nouveau personnage</button>
+          </div>
+          <div id="slotsGrid" class="slots-grid"></div>
+        </aside>
+
+        <section class="panel details-panel">
+          <div class="panel-title">
+            <h2>Détails personnage</h2>
+          </div>
+          <div id="characterDetails" class="character-details"></div>
+
+          <div id="characterActions" class="actions hidden">
+            <button id="playBtn" class="btn-success">Jouer</button>
+            <button id="deleteBtn" class="btn-danger">Supprimer</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="createPanel" class="panel create-panel hidden">
+        <div class="panel-title">
+          <h2>Création du personnage</h2>
+          <span id="createSlotLabel" class="create-slot-label">Slot #1</span>
+        </div>
+
+        <form id="createForm">
+          <div class="row">
+            <label>Prénom
+              <input name="firstName" maxlength="18" required />
+            </label>
+            <label>Nom
+              <input name="lastName" maxlength="18" required />
+            </label>
+          </div>
+
+          <div class="row">
+            <label>Sexe
+              <select name="sex" required>
+                <option value="m">Homme</option>
+                <option value="f">Femme</option>
+                <option value="x">Autre</option>
+              </select>
+            </label>
+            <label>Nationalité
+              <input name="nationality" maxlength="32" required />
+            </label>
+          </div>
+
+          <div class="row dob-row">
+            <label>Jour
+              <select id="dobDay" required></select>
+            </label>
+            <label>Mois
+              <select id="dobMonth" required></select>
+            </label>
+            <label>Année
+              <select id="dobYear" required></select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="randomIdentityBtn">Nom aléatoire</button>
+            <button type="button" id="cancelCreateBtn" class="ghost">Annuler</button>
+            <button type="submit" class="btn-primary">Valider la création</button>
+          </div>
+        </form>
+      </section>
+
+      <footer class="panel footer">
+        <button id="refreshBtn">Actualiser</button>
+        <button id="closeBtn" class="ghost">Fermer</button>
+        <p id="feedback"></p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
