@@ -95,7 +95,19 @@ lib.callback.register('mc_multicharacter:createCharacter', function(source, payl
         return { ok = false, error = 'slots_atteints' }
     end
 
-    local freeSlot = findAvailableSlot(existing)
+    local preferredSlot = tonumber(payload.slot)
+    local occupiedSlots = {}
+    for _, char in ipairs(existing) do
+        occupiedSlots[char.slot] = true
+    end
+
+    local freeSlot = nil
+    if preferredSlot and preferredSlot >= 1 and preferredSlot <= Config.MaxSlotsPerLicense and not occupiedSlots[preferredSlot] then
+        freeSlot = preferredSlot
+    else
+        freeSlot = findAvailableSlot(existing)
+    end
+
     if not freeSlot then
         return { ok = false, error = 'aucun_slot_disponible' }
     end
